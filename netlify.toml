@@ -1,0 +1,24 @@
+[build]
+  base = "app/"
+  publish = "build/"
+
+  # Default build command.
+  command = "npm run build"
+
+[context.production]
+  environment = { NODE_VERSION = "21.7.3" }
+
+[context.dev.environment]
+  NODE_ENV = "development"
+
+[functions]
+  directory = "functions/"
+
+# netlify.toml
+
+[[headers]]
+  # Specify the path to the function
+  for = "/*"
+
+  [headers.values]
+    Cache-Control = "public, max-age=300" # Adjust the max-age value as needed
